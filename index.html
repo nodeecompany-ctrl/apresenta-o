@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Company | Engenharia de Software e Automação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], },
+                    colors: { brand: { 50: '#ecfdf5', 100: '#d1fae5', 500: '#10b981', 600: '#059669', 700: '#047857', 900: '#064e3b', } }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        body { background-color: #f8fafc; color: #0f172a; }
+        
+        /* O Sistema ERP (Dark Mode UI Embutido na página clara) */
+        .erp-window {
+            background-color: #0f1115; border: 1px solid #1e293b; border-radius: 12px;
+            overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); color: #e2e8f0;
+        }
+        .erp-header { background-color: #1a202c; padding: 12px 16px; display: flex; align-items: center; border-bottom: 1px solid #2d3748; }
+        .mac-dots { display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background-color: #ff5f56; } .dot.yellow { background-color: #ffbd2e; } .dot.green { background-color: #27c93f; }
+        .erp-body { display: grid; grid-template-columns: 220px 1fr; min-height: 400px; }
+        .erp-sidebar { background-color: #111827; border-right: 1px solid #2d3748; padding: 20px 0; }
+        .erp-content { background-color: #0b0f19; padding: 24px; overflow-x: auto; }
+        .nav-item { padding: 10px 20px; color: #9ca3af; font-size: 14px; display: flex; align-items: center; gap: 12px; cursor: pointer; border-left: 3px solid transparent; }
+        .nav-item:hover, .nav-item.active { color: #fff; background-color: rgba(255,255,255,0.05); border-left-color: #10b981; }
+        
+        ::-webkit-scrollbar { height: 6px; width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b0f19; }
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+        
+        /* Sliders customizados */
+        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: #10b981; cursor: pointer; margin-top: -8px; }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 6px; cursor: pointer; background: #cbd5e1; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-black tracking-tighter text-slate-900">
+                NODE<span class="text-brand-500">.CO</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-slate-600">
+                <a href="#expertise" class="hover:text-brand-600 transition">O Gap da Automação</a>
+                <a href="#solucoes" class="hover:text-brand-600 transition">Ecossistemas</a>
+            </div>
+            <a href="#contato" class="bg-slate-900 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-colors">
+                Agendar Reunião
+            </a>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-700 text-sm font-bold mb-8 border border-brand-100">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                Software Tailor-Made & Inteligência Artificial
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-tight">
+                Sistemas que trabalham <br><span class="text-brand-500">por você.</span>
+            </h1>
+            <p class="text-xl text-slate-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Desenvolvemos ERPs e CRMs 100% personalizados. Transformamos fluxos manuais e processos engessados em automação de alta performance.
+            </p>
+            <a href="#solucoes" class="inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl text-lg font-bold transition shadow-lg shadow-brand-500/30">
+                Explorar Soluções <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="expertise" class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">A lacuna entre o software de prateleira e a <span class="text-brand-600">sua realidade.</span></h2>
+                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
+                        A maioria das empresas perde produtividade tentando adaptar seus processos a sistemas engessados. Planilhas se multiplicam, o retrabalho aumenta e os dados não conversentam.
+                    </p>
+                    <p class="text-slate-600 text-lg leading-relaxed font-semibold">
+                        A Node Company atua exatamente nesse "gap".
+                    </p>
+                    <p class="text-slate-600 mt-4 text-lg leading-relaxed">
+                        Nós orquestramos Inteligência Artificial, integrações de API e interfaces limpas para construir o sistema que se adapta à <strong>sua operação</strong>, eliminando o trabalho de "digitação" e transformando sua equipe em analistas estratégicos.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                        <i class="fa-solid fa-code-branch text-3xl text-brand-500 mb-4"></i>
+                        <h3 class="font-bold text-slate-900 mb-2">Orquestração</h3>
+                        <p class="text-sm text-slate-500">Conectamos seu PDV, financeiro e estoque em um fluxo único e automatizado.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                        <i class="fa-solid fa-robot text-3xl text-brand-500 mb-4"></i>
+                        <h3 class="font-bold text-slate-900 mb-2">Agentes IA</h3>
+                        <p class="text-sm text-slate-500">Bots que executam triagem, consultam APIs e validam dados 24/7 sem erros.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 col-span-2 flex items-center gap-6">
+                        <i class="fa-solid fa-bolt text-4xl text-brand-500"></i>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1">Tailor-Made Interface</h3>
+                            <p class="text-sm text-slate-500">UI/UX desenhada para a usabilidade de quem está no balcão ou na diretoria.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Mostruário de Soluções</h2>
+                <p class="text-lg text-slate-500">Interaja com os módulos abaixo e veja a engenharia da Node Company em ação.</p>
+            </div>
+
+            <div class="mb-32" x-data="{ cor: 'Verde Musgo', bgCode: '#3D5227', sku: 'BQ-VER-01', estoque: 14 }">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900"><i class="fa-solid fa-shirt text-brand-500 mr-2"></i> Gestão de Moda e Varejo</h3>
+                        <p class="text-slate-500 mt-2">O sistema cruza dados do PDV e atualiza grades de cor/tamanho instantaneamente.</p>
+                    </div>
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex items-center gap-4">
+                        <span class="text-sm font-bold text-slate-700">Simular Venda (Cor):</span>
+                        <button @click="cor = 'Verde Musgo'; bgCode = '#3D5227'; sku = 'BQ-VER-01'; estoque = 14" :class="cor === 'Verde Musgo' ? 'ring-2 ring-brand-500 ring-offset-2' : ''" class="w-8 h-8 rounded-full bg-[#3D5227] shadow-sm transition-all"></button>
+                        <button @click="cor = 'Preto Aura'; bgCode = '#111111'; sku = 'MA-PRE-02'; estoque = 4" :class="cor === 'Preto Aura' ? 'ring-2 ring-brand-500 ring-offset-2' : ''" class="w-8 h-8 rounded-full bg-black shadow-sm transition-all"></button>
+                    </div>
+                </div>
+                
+                <div class="erp-window">
+                    <div class="erp-header">
+                        <div class="mac-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                        <div class="mx-auto text-xs font-semibold text-gray-500 tracking-widest uppercase">Node ERP • Varejo</div>
+                    </div>
+                    <div class="erp-body">
+                        <div class="erp-sidebar hidden md:block">
+                            <div class="px-5 mb-6 text-white font-bold text-lg">Litoral Brasil</div>
+                            <div class="nav-item"><i class="fa-solid fa-chart-pie w-4"></i> Dashboard</div>
+                            <div class="nav-item active"><i class="fa-solid fa-tags w-4"></i> Produtos</div>
+                            <div class="nav-item"><i class="fa-solid fa-cart-shopping w-4"></i> Vendas PDV</div>
+                        </div>
+                        <div class="erp-content">
+                            <div class="bg-[#111827] rounded-lg border border-gray-800 overflow-hidden mt-2">
+                                <table class="w-full text-left text-sm">
+                                    <thead class="bg-gray-800/50 text-gray-400">
+                                        <tr><th class="p-4">Produto Ativo</th><th class="p-4">SKU / Cor</th><th class="p-4">Estoque Atual (Tam. M)</th><th class="p-4">Status</th></tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-800">
+                                        <tr class="hover:bg-white/5 transition">
+                                            <td class="p-4 flex items-center gap-3">
+                                                <div class="w-10 h-10 rounded transition-colors duration-300" :style="`background-color: ${bgCode}`"></div>
+                                                <div>
+                                                    <div class="font-bold text-white" x-text="cor === 'Verde Musgo' ? 'Biquíni Cortininha' : 'Maiô Engana Mamãe'"></div>
+                                                    <div class="text-xs text-gray-500">Coleção 2026</div>
+                                                </div>
+                                            </td>
+                                            <td class="p-4">
+                                                <div class="font-mono text-xs text-gray-400" x-text="sku"></div>
+                                                <div class="text-xs mt-1" x-text="cor"></div>
+                                            </td>
+                                            <td class="p-4">
+                                                <span class="px-3 py-1 bg-gray-700 rounded text-xs font-bold font-mono" x-text="estoque + ' UNIDADES'"></span>
+                                            </td>
+                                            <td class="p-4">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-24 bg-gray-700 rounded-full h-1.5"><div class="h-1.5 rounded-full transition-all duration-500" :class="estoque > 5 ? 'bg-green-500 w-3/4' : 'bg-yellow-500 w-1/4'"></div></div>
+                                                    <span class="text-xs font-bold" :class="estoque > 5 ? 'text-green-400' : 'text-yellow-400'" x-text="estoque > 5 ? 'Saudável' : 'Baixo'"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-32" x-data="{ entradas: 45230, saidas: 18450, get saldo() { return this.entradas - this.saidas } }">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900"><i class="fa-solid fa-chart-line text-brand-500 mr-2"></i> Motor Financeiro</h3>
+                        <p class="text-slate-500 mt-2">Diga adeus às planilhas. Automação de contas e projeção de fluxo de caixa em tempo real.</p>
+                    </div>
+                    <div class="bg-slate-100 p-4 w-full md:w-96 rounded-xl border border-slate-200">
+                        <div class="mb-4">
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1"><span>Ajustar Entradas</span><span class="text-brand-600" x-text="'R$ ' + entradas"></span></div>
+                            <input type="range" min="10000" max="80000" step="500" x-model="entradas">
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold text-slate-700 mb-1"><span>Ajustar Saídas</span><span class="text-red-500" x-text="'R$ ' + saidas"></span></div>
+                            <input type="range" min="5000" max="50000" step="500" x-model="saidas">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="erp-window">
+                    <div class="erp-header">
+                        <div class="mac-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                        <div class="mx-auto text-xs font-semibold text-gray-500 tracking-widest uppercase">Node ERP • Fluxo de Caixa</div>
+                    </div>
+                    <div class="erp-body">
+                        <div class="erp-sidebar hidden md:block">
+                            <div class="px-5 mb-6 text-white font-bold text-lg">Ateliê 03</div>
+                            <div class="nav-item active"><i class="fa-solid fa-house w-4"></i> Visão Geral</div>
+                            <div class="nav-item"><i class="fa-solid fa-file-invoice-dollar w-4"></i> Relatórios</div>
+                        </div>
+                        <div class="erp-content">
+                            <h3 class="text-lg font-bold mb-4">Consolidado do Mês</h3>
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                                <div class="bg-[#111827] p-5 rounded-lg border border-gray-800 border-l-4 border-l-green-500 transition-all duration-300">
+                                    <div class="text-gray-400 text-xs uppercase tracking-wider mb-1">Entradas (Faturado)</div>
+                                    <div class="text-2xl font-bold text-white font-mono" x-text="'R$ ' + Number(entradas).toLocaleString('pt-BR')"></div>
+                                </div>
+                                <div class="bg-[#111827] p-5 rounded-lg border border-gray-800 border-l-4 border-l-red-500 transition-all duration-300">
+                                    <div class="text-gray-400 text-xs uppercase tracking-wider mb-1">Saídas (Custos)</div>
+                                    <div class="text-2xl font-bold text-white font-mono" x-text="'R$ ' + Number(saidas).toLocaleString('pt-BR')"></div>
+                                </div>
+                                <div class="bg-[#111827] p-5 rounded-lg border border-gray-800 border-l-4 transition-all duration-300" :class="saldo >= 0 ? 'border-l-brand-500' : 'border-l-red-600'">
+                                    <div class="text-gray-400 text-xs uppercase tracking-wider mb-1">Saldo Líquido Projetado</div>
+                                    <div class="text-2xl font-bold font-mono" :class="saldo >= 0 ? 'text-brand-400' : 'text-red-500'" x-text="'R$ ' + Number(saldo).toLocaleString('pt-BR')"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-32" x-data="{ pesoKg: 0.250, preco: 89.90, get total() { return this.pesoKg * this.preco } }">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900"><i class="fa-solid fa-scale-unbalanced text-brand-500 mr-2"></i> PDV Granel & Lotes</h3>
+                        <p class="text-slate-500 mt-2">Módulo nativo para fracionados. Cálculo simultâneo por gramagem e gestão de validade de matéria-prima.</p>
+                    </div>
+                    <div class="bg-slate-100 p-4 rounded-xl border border-slate-200">
+                        <span class="text-sm font-bold text-slate-700 block mb-2">Simular Balança (Peso):</span>
+                        <input type="range" min="0.050" max="2.000" step="0.050" x-model="pesoKg" class="w-48">
+                    </div>
+                </div>
+
+                <div class="erp-window">
+                    <div class="erp-header">
+                        <div class="mac-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                        <div class="mx-auto text-xs font-semibold text-gray-500 tracking-widest uppercase">Node ERP • Balança PDV</div>
+                    </div>
+                    <div class="erp-body" style="grid-template-columns: 80px 1fr;"> 
+                        <div class="erp-sidebar flex flex-col items-center gap-6">
+                            <div class="w-10 h-10 bg-brand-500/20 text-brand-500 rounded-lg flex items-center justify-center mb-4"><i class="fa-solid fa-calculator"></i></div>
+                            <div class="text-gray-600 hover:text-gray-300 transition"><i class="fa-solid fa-box text-xl"></i></div>
+                        </div>
+                        <div class="erp-content flex gap-8">
+                            <div class="flex-1 bg-black border border-gray-800 p-8 rounded-xl shadow-inner relative overflow-hidden flex flex-col justify-center">
+                                <div class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-2 flex justify-between">
+                                    <span>Páprica Doce (Lote #092)</span>
+                                    <span class="text-brand-500 flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></div> Ativa</span>
+                                </div>
+                                <div class="font-mono text-7xl text-white tracking-tighter text-right my-8 transition-all duration-150" x-text="Number(pesoKg).toFixed(3) + ' kg'"></div>
+                                <div class="flex justify-between border-t border-gray-800 pt-6 mt-4 items-end">
+                                    <div>
+                                        <div class="text-xs text-gray-500 uppercase">Preço/Kg</div>
+                                        <div class="text-xl font-mono text-gray-300">R$ 89,90</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-xs text-brand-500 font-bold uppercase">Total Calculado</div>
+                                        <div class="text-3xl font-mono text-brand-400 font-bold transition-all duration-150" x-text="'R$ ' + total.toFixed(2)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-20" x-data="{ step: 1 }">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900"><i class="fa-solid fa-house-user text-brand-500 mr-2"></i> Automação de Funil & CRM</h3>
+                        <p class="text-slate-500 mt-2">Clique nas etapas do pipeline abaixo para ver como o sistema executa processos em background.</p>
+                    </div>
+                </div>
+
+                <div class="erp-window">
+                    <div class="erp-header">
+                        <div class="mac-dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+                        <div class="mx-auto text-xs font-semibold text-gray-500 tracking-widest uppercase">Node CRM • Imobiliária</div>
+                    </div>
+                    <div class="erp-body" style="grid-template-columns: 1fr;"> 
+                        <div class="erp-content bg-[#0b0f19] flex flex-col items-center justify-center p-12">
+                            
+                            <div class="w-full max-w-3xl relative mb-12">
+                                <div class="absolute top-5 left-0 w-full h-1 bg-gray-800 rounded"></div>
+                                <div class="absolute top-5 left-0 h-1 bg-brand-500 rounded transition-all duration-500" :style="`width: ${(step - 1) * 33.33}%`"></div>
+                                
+                                <div class="flex justify-between relative z-10">
+                                    <button @click="step = 1" class="flex flex-col items-center gap-3 focus:outline-none group">
+                                        <div class="w-10 h-10 rounded-full border-4 flex items-center justify-center transition-colors duration-300" :class="step >= 1 ? 'bg-brand-500 border-brand-500 text-white' : 'bg-gray-900 border-gray-700 text-gray-500'"><i class="fa-solid fa-user"></i></div>
+                                        <span class="text-xs font-bold uppercase tracking-widest" :class="step >= 1 ? 'text-brand-400' : 'text-gray-500'">Novo Lead</span>
+                                    </button>
+                                    <button @click="step = 2" class="flex flex-col items-center gap-3 focus:outline-none group">
+                                        <div class="w-10 h-10 rounded-full border-4 flex items-center justify-center transition-colors duration-300" :class="step >= 2 ? 'bg-brand-500 border-brand-500 text-white' : 'bg-gray-900 border-gray-700 text-gray-500'"><i class="fa-solid fa-key"></i></div>
+                                        <span class="text-xs font-bold uppercase tracking-widest" :class="step >= 2 ? 'text-brand-400' : 'text-gray-500'">Visita</span>
+                                    </button>
+                                    <button @click="step = 3" class="flex flex-col items-center gap-3 focus:outline-none group">
+                                        <div class="w-10 h-10 rounded-full border-4 flex items-center justify-center transition-colors duration-300" :class="step >= 3 ? 'bg-brand-500 border-brand-500 text-white' : 'bg-gray-900 border-gray-700 text-gray-500'"><i class="fa-solid fa-magnifying-glass-dollar"></i></div>
+                                        <span class="text-xs font-bold uppercase tracking-widest" :class="step >= 3 ? 'text-brand-400' : 'text-gray-500'">Análise</span>
+                                    </button>
+                                    <button @click="step = 4" class="flex flex-col items-center gap-3 focus:outline-none group">
+                                        <div class="w-10 h-10 rounded-full border-4 flex items-center justify-center transition-colors duration-300" :class="step >= 4 ? 'bg-brand-500 border-brand-500 text-white shadow-[0_0_15px_#10b981]' : 'bg-gray-900 border-gray-700 text-gray-500'"><i class="fa-solid fa-signature"></i></div>
+                                        <span class="text-xs font-bold uppercase tracking-widest" :class="step >= 4 ? 'text-brand-400' : 'text-gray-500'">Contrato</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="w-full max-w-xl bg-gray-900/50 border border-gray-800 rounded-xl p-6 text-center">
+                                <p class="text-xs text-gray-500 uppercase tracking-widest font-bold mb-3">Automação em Execução</p>
+                                <div x-show="step === 1" class="text-white text-lg"><i class="fa-brands fa-whatsapp text-brand-500 mr-2"></i> Disparando apresentação e catálogo via WhatsApp...</div>
+                                <div x-show="step === 2" class="text-white text-lg"><i class="fa-solid fa-calendar-check text-blue-400 mr-2"></i> Verificando disponibilidade de chaves na portaria.</div>
+                                <div x-show="step === 3" class="text-white text-lg"><i class="fa-solid fa-spinner fa-spin text-yellow-400 mr-2"></i> Consultando API Serasa/Score do cliente...</div>
+                                <div x-show="step === 4" class="text-brand-400 font-bold text-lg"><i class="fa-solid fa-check-double mr-2"></i> DocuSign gerado e enviado. Repasse financeiro engatilhado.</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contato" class="bg-slate-900 text-white py-20 border-t-4 border-brand-500">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Pare de se adaptar ao software.</h2>
+            <p class="text-xl text-slate-400 mb-10">Deixe a Node Company construir a inteligência que se adapta à sua empresa.</p>
+            
+            <a href="https://wa.me/SEUNUMERO" target="_blank" class="inline-flex items-center gap-3 bg-brand-500 hover:bg-brand-400 text-white px-10 py-5 rounded-full text-lg font-bold transition shadow-lg shadow-brand-500/20">
+                <i class="fa-brands fa-whatsapp text-2xl"></i> Falar com um Especialista
+            </a>
+
+            <div class="mt-20 pt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <p>&copy; 2026 Node Company Ecosystem. Todos os direitos reservados.</p>
+                <p class="mt-4 md:mt-0 font-mono tracking-widest uppercase">Maricá • RJ • Brasil</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
